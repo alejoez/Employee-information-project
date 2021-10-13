@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.com.leanTech.dto.EmployeeDTO;
 import co.com.leanTech.dto.PersonDTO;
-import co.com.leanTech.jsonFormater.ReturnResultExercises;
+import co.com.leanTech.jsonFormater.ReturnEmployeesInformation;
 import co.com.leanTech.jsonFormater.SubmitResult;
 import co.com.leanTech.models.Employee;
 import co.com.leanTech.models.Position;
@@ -135,13 +135,13 @@ public class EmployeeRestController {
 			
 			List<Employee> foo = employeeService.findEmployeesByPosition();
 			
-			List<ReturnResultExercises> resultList = new ArrayList<ReturnResultExercises>();
+			List<ReturnEmployeesInformation> resultList = new ArrayList<ReturnEmployeesInformation>();
 			
 			HashMap<Integer, SubmitResult> submitList = new HashMap<Integer, SubmitResult>();
 			
 			SubmitResult submitResult = new SubmitResult();
 			
-			List<ReturnResultExercises> listaResultado=new ArrayList<>();
+			List<ReturnEmployeesInformation> listaResultado=new ArrayList<>();
 			
 			HashMap<Integer, String> positionMap = new HashMap<Integer, String>();
 			
@@ -149,7 +149,7 @@ public class EmployeeRestController {
 				positionMap.put(employee.getPosition().getId(), employee.getPosition().getName());
 				
 				submitResult = new SubmitResult();
-				ReturnResultExercises rre = new ReturnResultExercises();
+				ReturnEmployeesInformation rre = new ReturnEmployeesInformation();
 				PersonDTO personDTO = new PersonDTO();
 				
 				submitResult.setId(employee.getPosition().getId());

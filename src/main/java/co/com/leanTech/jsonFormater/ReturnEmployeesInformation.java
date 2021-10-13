@@ -4,7 +4,7 @@ import co.com.leanTech.dto.PersonDTO;
 import lombok.Data;
 
 @Data
-public class ReturnResultExercises {
+public class ReturnEmployeesInformation {
 	
 	private Integer id; //idEmployee
 	private String salary;

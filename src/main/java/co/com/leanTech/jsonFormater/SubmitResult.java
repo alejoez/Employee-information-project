@@ -17,13 +17,13 @@ public class SubmitResult {
 	public String name;
 	
 	@JsonProperty
-	public List<ReturnResultExercises> employee;
+	public List<ReturnEmployeesInformation> employee;
 	
 	@JsonProperty
 	public List<SubmitResult> submit;
 	
 	public SubmitResult() {
-		this.employee=new ArrayList<ReturnResultExercises>();
+		this.employee=new ArrayList<ReturnEmployeesInformation>();
 		this.submit=new ArrayList<SubmitResult>();
 	}
 }
