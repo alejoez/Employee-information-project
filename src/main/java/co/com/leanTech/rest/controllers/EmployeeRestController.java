@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.com.leanTech.dto.EmployeeDTO;
-import co.com.leanTech.dto.PersonDTO;
-import co.com.leanTech.jsonFormater.ReturnEmployeesInformation;
 import co.com.leanTech.jsonFormater.SubmitResult;
 import co.com.leanTech.models.Employee;
 import co.com.leanTech.models.Position;
@@ -102,6 +100,8 @@ public class EmployeeRestController {
 		
 		try {
 			
+			//if idPosition or employeeName are null, we need to change to data default for generate the consult correctly.
+			//if idPosition and employeeName are null we get all employee list.
 			if(idPosition==null) {
 				idPosition=-1;
 			}
@@ -127,68 +127,19 @@ public class EmployeeRestController {
 	}
 	
 	@GetMapping(value="/toListEmployeesByPosition")
-	public SubmitResult toListEmployeesByPosition()throws Exception{
+	public HashMap<Integer, SubmitResult> toListEmployeesByPosition()throws Exception{
 		
-		SubmitResult result = new SubmitResult();
+		HashMap<Integer, SubmitResult> submitMap = new HashMap<>();
 		
 		try {
-			
-			List<Employee> foo = employeeService.findEmployeesByPosition();
-			
-			List<ReturnEmployeesInformation> resultList = new ArrayList<ReturnEmployeesInformation>();
-			
-			HashMap<Integer, SubmitResult> submitList = new HashMap<Integer, SubmitResult>();
-			
-			SubmitResult submitResult = new SubmitResult();
-			
-			List<ReturnEmployeesInformation> listaResultado=new ArrayList<>();
-			
-			HashMap<Integer, String> positionMap = new HashMap<Integer, String>();
-			
-			for (Employee employee : foo) {
-				positionMap.put(employee.getPosition().getId(), employee.getPosition().getName());
-				
-				submitResult = new SubmitResult();
-				ReturnEmployeesInformation rre = new ReturnEmployeesInformation();
-				PersonDTO personDTO = new PersonDTO();
-				
-				submitResult.setId(employee.getPosition().getId());
-				submitResult.setName(employee.getPosition().getName());
-				
-				rre.setId(employee.getId());
-				rre.setSalary(employee.getSalary());
-				
-				personDTO.setName(employee.getPerson().getName());
-				personDTO.setLastNam2(employee.getPerson().getLastName());
-				personDTO.setAddress(employee.getPerson().getAddress());
-				personDTO.setCellphone(employee.getPerson().getCellphone());
-				personDTO.setCityName(employee.getPerson().getCityName());
-				
-				rre.setPerson(personDTO);
-				
-				rre.setIdPosition(employee.getPosition().getId());
-				
-				listaResultado.add(rre);
-				
-				resultList.add(rre);
-				
-				submitResult.setEmployee(resultList);
-				
-				submitList.put(employee.getPosition().getId(), submitResult);
-			}
-			
-			List<SubmitResult> list = new ArrayList<SubmitResult>(submitList.values());
-			
-			
-			
-			
-			result.submit=list;
+
+			submitMap = employeeService.toListEmployeesByPosition();
 			
 		}catch(Exception e) {
 			log.info(e.getMessage());
 		}
 		
-		return result;
+		return submitMap;
 	}
 	
 	

@@ -19,11 +19,8 @@ public class SubmitResult {
 	@JsonProperty
 	public List<ReturnEmployeesInformation> employee;
 	
-	@JsonProperty
-	public List<SubmitResult> submit;
 	
 	public SubmitResult() {
 		this.employee=new ArrayList<ReturnEmployeesInformation>();
-		this.submit=new ArrayList<SubmitResult>();
 	}
 }

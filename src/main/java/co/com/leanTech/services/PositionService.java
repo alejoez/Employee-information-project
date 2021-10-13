@@ -1,12 +1,12 @@
 package co.com.leanTech.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import co.com.leanTech.Repository.IPositionRepository;
 import co.com.leanTech.models.Position;
 
-@Component
+@Service
 public class PositionService implements IPositionService{
 
 	@Autowired

@@ -51,8 +51,10 @@ public class EmployeeInformationProjectApplication implements ApplicationListene
 		
 		//Default data
 		
+		//Add information related to employees in the employee list to save.
 		List<EmployeeDTO> listEmployeeDTO = addEmployeesToList();
 		
+		//Save two default position for the employees
 		positionRepository.save(new Position("Dev"));
 		positionRepository.save(new Position("Qa"));
 		

@@ -25,11 +25,11 @@ public class Employee {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@OneToOne(fetch = FetchType.LAZY)//, cascade=CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idPerson")
 	private Person person;
 	
-	@OneToOne(fetch = FetchType.LAZY)//, cascade=CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="idPosition")
 	private Position position;
 	

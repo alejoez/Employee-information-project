@@ -25,10 +25,6 @@ public class Position {
 	@Column(name="positionName")
 	private String name;
 	
-	/*@OneToMany(targetEntity=Employee.class, cascade=CascadeType.ALL)
-	@JoinColumn(name="empl_pos", referencedColumnName = "id")
-	private List<Employee> employee;*/
-	 
 	public Position(String name) {
 		this.name=name;
 	}
